@@ -1,0 +1,95 @@
+﻿@{
+    var controlador = ViewContext.RouteData.Values["controller"]?.ToString() ?? "";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#090e19" />
+    <title>@ViewData["Title"] · NEXUS</title>
+
+    <link rel="stylesheet"
+          href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet"
+          href="~/css/site.css" asp-append-version="true" />
+</head>
+
+<body class="nexus-body">
+    <div class="ambient-background" aria-hidden="true">
+        <div class="ambient-orb ambient-orb-a"></div>
+        <div class="ambient-orb ambient-orb-b"></div>
+        <div class="ambient-orb ambient-orb-c"></div>
+    </div>
+
+    <header class="nexus-header">
+        <nav class="nexus-nav glass-surface"
+             aria-label="Navegación principal">
+
+            <a class="brand-lockup"
+               asp-controller="Home" asp-action="Index">
+                <span class="brand-mark">N</span>
+                <span class="brand-details">
+                    <strong>NEXUS</strong>
+                    <small>MANAGEMENT CONSOLE</small>
+                </span>
+            </a>
+
+            <button type="button"
+                    class="mobile-nav-toggle"
+                    aria-expanded="false"
+                    aria-controls="nexusNavigation"
+                    aria-label="Abrir navegación">
+                ☰
+            </button>
+
+            <div class="nav-links" id="nexusNavigation">
+                <a class="nav-pill @(controlador == "Home" ? "active" : "")"
+                   asp-controller="Home" asp-action="Index">
+                    Inicio
+                </a>
+
+                <a class="nav-pill @(controlador == "Clientes" ? "active" : "")"
+                   asp-controller="Clientes" asp-action="Index">
+                    Clientes
+                </a>
+
+                <a class="nav-pill @(controlador == "Pedidos" ? "active" : "")"
+                   asp-controller="Pedidos" asp-action="Index">
+                    Pedidos
+                </a>
+
+                <a class="nav-pill @(controlador == "Llamadas" ? "active" : "")"
+                   asp-controller="Llamadas" asp-action="Index">
+                    Llamadas
+                </a>
+
+                <a class="nav-pill @(controlador == "Gimnasio" ? "active" : "")"
+                   asp-controller="Gimnasio" asp-action="Index">
+                    Gimnasio
+                </a>
+            </div>
+
+            <span class="nav-status">
+                <span class="status-pulse"></span>
+                Online
+            </span>
+        </nav>
+    </header>
+
+    <main class="nexus-main">
+        @RenderBody()
+    </main>
+
+    <footer class="nexus-footer">
+        <span>NEXUS © @DateTime.Now.Year</span>
+        <span>Desarrollo de Servicios Web I · Cibertec</span>
+    </footer>
+
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<DSWI_T1_INDIVIDUAL02.Models.Cliente>
+
+@{
+    ViewData["Title"] = "Gestión de clientes";
+}
+
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h2>Gestión de clientes</h2>
+    <a asp-action="Crear" class="btn btn-primary">
+        + Nuevo cliente
+    </a>
+</div>
+
+<table class="table table-hover align-middle">
+    <thead class="table-dark">
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Correo electrónico</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var cliente in Model)
+        {
+            <tr>
+                <td>@cliente.ClienteId</td>
+                <td>@cliente.Nombre</td>
+                <td>@cliente.CorreoElectronico</td>
+                <td>
+                    <a asp-action="Editar"
+                       asp-route-id="@cliente.ClienteId"
+                       class="btn btn-sm btn-outline-primary">
+                        Editar
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

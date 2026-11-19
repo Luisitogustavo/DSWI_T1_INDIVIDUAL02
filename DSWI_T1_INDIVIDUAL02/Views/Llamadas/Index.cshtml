@@ -1,0 +1,27 @@
+﻿@model DSWI_T1_INDIVIDUAL02.Models.Llamada
+
+@{
+    ViewData["Title"] = "Costo de llamadas";
+}
+
+<h2>Cálculo de llamadas telefónicas</h2>
+
+<form asp-controller="Llamadas" asp-action="Index" method="post">
+    <div class="mb-3">
+        <label asp-for="Minutos">Minutos de llamada:</label>
+        <input asp-for="Minutos" type="number"
+               min="1" class="form-control" required />
+        <span asp-validation-for="Minutos" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">
+        Calcular
+    </button>
+</form>
+
+@if (Model.Total > 0)
+{
+    <hr />
+    <h3>Total a pagar: $ @Model.Total.ToString("0.00")</h3>
+}
+

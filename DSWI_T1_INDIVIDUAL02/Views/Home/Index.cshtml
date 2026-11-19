@@ -1,0 +1,160 @@
+﻿@model DSWI_T1_INDIVIDUAL02.Models.DashboardViewModel
+
+@{
+    ViewData["Title"] = "Centro de control";
+}
+
+<section class="hero-panel glass-surface">
+    <div class="hero-copy">
+        <span class="eyebrow">
+            <span class="status-pulse"></span>
+            PLATAFORMA OPERATIVA
+        </span>
+
+        <h1>
+            El control de tus operaciones,
+            <span class="gradient-text">en un solo lugar.</span>
+        </h1>
+
+        <p class="hero-description">
+            Una experiencia de gestión inteligente para
+            clientes, pedidos y herramientas de cálculo.
+        </p>
+
+        <div class="hero-actions">
+            <a asp-controller="Clientes" asp-action="Index"
+               class="btn-liquid btn-liquid-primary">
+                Explorar clientes <span aria-hidden="true">↗</span>
+            </a>
+
+            <a asp-controller="Pedidos" asp-action="Index"
+               class="btn-liquid btn-liquid-outline">
+                Ver pedidos <span aria-hidden="true">→</span>
+            </a>
+        </div>
+    </div>
+
+    <div class="hero-visual" aria-hidden="true">
+        <div class="orb orb-one"></div>
+        <div class="orb orb-two"></div>
+        <div class="glass-emblem">
+            <div class="emblem-inner">N</div>
+        </div>
+    </div>
+</section>
+
+<section class="dashboard-section">
+    <div class="section-heading">
+        <div>
+            <span class="section-kicker">ANÁLISIS EN TIEMPO REAL</span>
+            <h2>Resumen general</h2>
+        </div>
+        <span class="section-note">Datos de EmpresaDB</span>
+    </div>
+
+    <div class="metrics-grid">
+        <article class="metric-card glass-surface">
+            <div class="metric-top">
+                <span>Clientes registrados</span>
+                <span class="metric-icon">◈</span>
+            </div>
+            <strong class="metric-value" data-count="@Model.TotalClientes">
+                @Model.TotalClientes
+            </strong>
+            <span class="metric-foot">Total en la base de datos</span>
+        </article>
+
+        <article class="metric-card glass-surface">
+            <div class="metric-top">
+                <span>Pedidos totales</span>
+                <span class="metric-icon">▣</span>
+            </div>
+            <strong class="metric-value" data-count="@Model.TotalPedidos">
+                @Model.TotalPedidos
+            </strong>
+            <span class="metric-foot">Operaciones registradas</span>
+        </article>
+
+        <article class="metric-card glass-surface">
+            <div class="metric-top">
+                <span>Pedidos pendientes</span>
+                <span class="metric-icon">◷</span>
+            </div>
+            <strong class="metric-value" data-count="@Model.PedidosPendientes">
+                @Model.PedidosPendientes
+            </strong>
+            <span class="metric-foot">Por completar</span>
+        </article>
+
+        <article class="metric-card glass-surface">
+            <div class="metric-top">
+                <span>Monto acumulado</span>
+                <span class="metric-icon">◇</span>
+            </div>
+            <strong class="metric-value">
+                $ @Model.MontoAcumulado.ToString("N2")
+            </strong>
+            <span class="metric-foot">Suma de todos los pedidos</span>
+        </article>
+    </div>
+</section>
+
+<section class="dashboard-section">
+    <div class="section-heading">
+        <div>
+            <span class="section-kicker">ESPACIO DE TRABAJO</span>
+            <h2>Explora tus módulos</h2>
+        </div>
+        <span class="section-note">4 herramientas disponibles</span>
+    </div>
+
+    <div class="modules-grid">
+        <a asp-controller="Clientes" asp-action="Index"
+           class="module-card glass-surface">
+            <span class="module-symbol">◈</span>
+            <span class="module-category">GESTIÓN COMERCIAL</span>
+            <strong>Clientes</strong>
+            <span class="module-description">
+                Administra registros, información de contacto
+                y actualizaciones.
+            </span>
+            <span class="module-arrow">↗</span>
+        </a>
+
+        <a asp-controller="Pedidos" asp-action="Index"
+           class="module-card glass-surface">
+            <span class="module-symbol">▣</span>
+            <span class="module-category">OPERACIONES</span>
+            <strong>Pedidos</strong>
+            <span class="module-description">
+                Registra operaciones, consulta montos
+                y gestiona estados.
+            </span>
+            <span class="module-arrow">↗</span>
+        </a>
+
+        <a asp-controller="Llamadas" asp-action="Index"
+           class="module-card glass-surface">
+            <span class="module-symbol">⌁</span>
+            <span class="module-category">HERRAMIENTAS</span>
+            <strong>Llamadas</strong>
+            <span class="module-description">
+                Calcula tarifas telefónicas mediante
+                reglas de consumo.
+            </span>
+            <span class="module-arrow">↗</span>
+        </a>
+
+        <a asp-controller="Gimnasio" asp-action="Index"
+           class="module-card glass-surface">
+            <span class="module-symbol">◎</span>
+            <span class="module-category">MEMBRESÍAS</span>
+            <strong>Gimnasio</strong>
+            <span class="module-description">
+                Simula membresías, tarifas por edad
+                y descuentos especiales.
+            </span>
+            <span class="module-arrow">↗</span>
+        </a>
+    </div>
+</section>

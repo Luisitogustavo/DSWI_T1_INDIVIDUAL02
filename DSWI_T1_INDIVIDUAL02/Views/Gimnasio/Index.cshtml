@@ -1,0 +1,36 @@
+﻿@model DSWI_T1_INDIVIDUAL02.Models.Gimnasio
+
+@{
+    ViewData["Title"] = "Membresía de gimnasio";
+}
+
+<h2>Cálculo de membresía de gimnasio</h2>
+
+<form asp-controller="Gimnasio" asp-action="Index" method="post">
+    <div class="mb-3">
+        <label asp-for="Edad">Edad del cliente:</label>
+        <input asp-for="Edad" type="number" min="0"
+               class="form-control" required />
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Meses">Meses contratados:</label>
+        <input asp-for="Meses" type="number" min="1"
+               class="form-control" required />
+    </div>
+
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <button type="submit" class="btn btn-primary">
+        Calcular membresía
+    </button>
+</form>
+
+@if (Model.Total > 0)
+{
+    <hr />
+    <h4>Resultados</h4>
+    <p>Tarifa base mensual: $ @Model.TarifaBase.ToString("0.00")</p>
+    <p>Descuento aplicado: $ @Model.Descuento.ToString("0.00")</p>
+    <h3>Total a pagar: $ @Model.Total.ToString("0.00")</h3>
+}

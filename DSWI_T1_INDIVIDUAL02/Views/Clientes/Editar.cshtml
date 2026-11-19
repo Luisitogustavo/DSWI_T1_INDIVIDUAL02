@@ -1,0 +1,30 @@
+﻿@model DSWI_T1_INDIVIDUAL02.Models.Cliente
+
+@{
+    ViewData["Title"] = "Editar cliente";
+}
+
+<h2>Editar cliente</h2>
+
+<form asp-action="Editar" method="post">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="ClienteId" />
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    <div class="mb-3">
+        <label asp-for="Nombre" class="form-label"></label>
+        <input asp-for="Nombre" class="form-control" maxlength="100" required />
+        <span asp-validation-for="Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CorreoElectronico" class="form-label">Correo electrónico</label>
+        <input asp-for="CorreoElectronico" type="email"
+               class="form-control" maxlength="100" required />
+        <span asp-validation-for="CorreoElectronico" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Actualizar</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancelar</a>
+</form>
